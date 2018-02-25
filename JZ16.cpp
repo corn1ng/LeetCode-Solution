@@ -1,18 +1,13 @@
 class Solution {
 public:
-    double Power(double base, int exponent) {
-        double number = 1.0 ;
-        int flag=0;
-        if(exponent<0)
-        {
-            exponent =-exponent;
-            flag=1;
+    double Power(double x, int n) {
+       if(n == 0)
+            return 1;
+        if(n<0){
+            n = -n;
+            x = 1/x;
         }
-        for(int i=0;i<exponent;i++)
-        {
-            number =number*base;
-        }
-        if(flag==1) number=1/number;
-        return number;
+        if(n==1) return x;
+        return (n%2 == 0) ? Power(x*x, n/2) : x*Power(x*x, n/2);
     }
 };
